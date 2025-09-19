@@ -1,0 +1,63 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f8f8; /* off white */
+  color: #111; /* off black */
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
+}
+
+.container {
+  font-size: clamp(1.2rem, 3vw, 2.2rem); /* responsive Schriftgröße */
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.bracket {
+  font-weight: 600;
+  opacity: 0;
+  transform: scale(0.5);
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.bracket.right {
+  animation-delay: 0.3s;
+}
+
+.text {
+  margin: 0 0.5em;
+  border-right: 2px solid #111;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0; /* hidden at first */
+  animation: typing 2.8s steps(35, end) forwards, blink 0.8s step-end infinite;
+  animation-delay: 0.9s; /* starts after brackets */
+  font-weight: 400;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 27ch } /* genug Platz für gesamten Satz */
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+/* Cursor nach Ende entfernen */
+.text.done {
+  border-right: none;
+}

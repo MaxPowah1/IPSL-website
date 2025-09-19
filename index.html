@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inter Paucos Silentium Loquitur</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <span class="bracket left">[</span>
+    <span id="typed" class="text">Inter paucos silentium loquitur .</span>
+    <span class="bracket right">]</span>
+</div>
+
+<script>
+    // Cursor nach Ende des Tippens entfernen
+    const text = document.getElementById("typed");
+    text.addEventListener("animationend", (e) => {
+      if (e.animationName === "typing") {
+        text.classList.add("done");
+      }
+    });
+</script>
+</body>
+</html>
