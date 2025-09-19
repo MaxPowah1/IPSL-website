@@ -18,6 +18,35 @@
     <span class="bracket right">]</span>
 </div>
 
+<!-- About Button -->
+<div class="about-link" id="aboutBtn">about</div>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay"></div>
+
+<!-- Slider -->
+<div class="slider" id="slider">
+    <div class="slider-content">
+        <h2>About</h2>
+        <p>
+            Membership is presence within a circle reserved for the few.
+            It is not spoken of, yet always recognized.
+        </p>
+        <p>
+            With membership unlock our app — a badge of belonging.
+            Discreet, rare, and carried only by those who move within these walls of silence.
+        </p>
+        <p>
+            To hold it is to embody distinction; to be seen is enough.
+            Those who understand, already know.
+        </p>
+        <p>
+            <em>“Inter paucos silentium loquitur.”</em> — Among the few, silence speaks.
+        </p>
+    </div>
+</div>
+
+<script src="script.js"></script>
 <script>
     const text = document.getElementById("typed");
     const messages = [
@@ -28,26 +57,19 @@
     let index = 0;
 
     function typeMessage(msg) {
-        // Zielbreite anhand Zeichenlänge setzen
         text.style.setProperty("--chars", msg.length);
-
-        // Animation sauber resetten (wichtig!)
         text.classList.remove("done", "typing");
-        text.style.animation = "none";   // CSS-Animation stoppen
-        void text.offsetWidth;           // Reflow erzwingen
-        text.style.animation = "";       // Inline-Reset
-
-        // Text setzen und Animation wieder aktivieren
+        text.style.animation = "none";
+        void text.offsetWidth;
+        text.style.animation = "";
         text.textContent = msg;
         text.classList.add("typing");
     }
 
-    // Initial starten, wenn DOM fertig
     document.addEventListener("DOMContentLoaded", () => {
         typeMessage(messages[0]);
     });
 
-    // Nach Ende der Tipp-Animation Cursor ausblenden
     text.addEventListener("animationend", (e) => {
       if (e.animationName === "typing") {
         text.classList.add("done");
@@ -61,7 +83,6 @@
         }
     }
 
-    // Maus & Tastatur
     text.addEventListener("click", advance);
     text.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") {

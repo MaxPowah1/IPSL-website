@@ -10,6 +10,7 @@ body {
   overflow: hidden;
 }
 
+/* -------- Zentrale Schrift -------- */
 .container {
   font-size: clamp(1.2rem, 3vw, 2.2rem);
   letter-spacing: 0.05em;
@@ -35,9 +36,7 @@ body {
   font-weight: 400;
   cursor: default;
 }
-.text:hover {
-  cursor: pointer;               /* „Link-Hand“ */
-}
+.text:hover { cursor: pointer; }
 
 .typing {
   /* Schritte = Anzahl Zeichen; Breite wächst bis zur Textlänge */
@@ -60,3 +59,82 @@ body {
 
 /* Cursor nach Ende ausblenden */
 .text.done { border-right: none; }
+
+/* -------- About Button -------- */
+.about-link {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: #111;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+  z-index: 11; /* über Overlay, unter Slider */
+}
+.about-link:hover { opacity: 1; }
+
+/* -------- Overlay -------- */
+#overlay {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(0px);
+  background: rgba(0,0,0,0);
+  opacity: 0;
+  pointer-events: none;
+  transition: backdrop-filter 0.4s ease,
+              background 0.4s ease,
+              opacity 0.4s ease;
+  z-index: 9;
+}
+#overlay.active {
+  backdrop-filter: blur(6px);
+  background: rgba(0,0,0,0.2);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* -------- Slider -------- */
+#slider {
+  position: fixed;
+  top: 0;
+  left: 0; /* bleibt 0, verschieben wir mit transform */
+  width: min(90vw, 360px);
+  height: 100%;
+  background: #111;       /* off black */
+  color: #f8f8f8;         /* off white */
+  box-shadow: 2px 0 15px rgba(0,0,0,0.5);
+  padding: 2rem;
+  overflow-y: auto;
+  transform: translateX(-102%);
+  transition: transform 0.45s ease;
+  z-index: 10;
+  will-change: transform;
+}
+#slider.active { transform: translateX(0); }
+
+/* -------- Slider Inhalt -------- */
+#slider .slider-content h2 {
+  margin-top: 0;
+  font-weight: 600;
+}
+#slider .slider-content p {
+  line-height: 1.5;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+/* -------- Close-Button im Slider -------- */
+#slider #closeSlider {
+  background: transparent;
+  border: 1px solid #f8f8f8;
+  padding: 0.5rem 1rem;
+  color: #f8f8f8;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+  font-family: inherit;
+}
+#slider #closeSlider:hover {
+  background: #f8f8f8;
+  color: #111;
+}
