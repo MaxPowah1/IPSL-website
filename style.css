@@ -6,7 +6,7 @@ body {
   justify-content: center;
   background-color: #f8f8f8; /* off white */
   color: #111; /* off black */
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Julius Sans One', sans-serif;
   overflow: hidden;
 }
 
@@ -88,8 +88,8 @@ body {
   z-index: 9;
 }
 #overlay.active {
-  backdrop-filter: blur(6px);
-  background: rgba(0,0,0,0.2);
+  backdrop-filter: blur(3px);
+  background: rgba(0,0,0,0.0);
   opacity: 1;
   pointer-events: auto;
 }
